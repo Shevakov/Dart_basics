@@ -42,11 +42,37 @@ class DelimetersCalculator {
   }
 }
 
-// class NumbersСonverter {
-    
-// }
+class NumberConverter {
+  static int binaryToDec(int binary) {
+    int decimal = 0;
 
+    int base = 1;
+
+    int temp = binary;
+    while (temp > 0) {
+      int lastDigit = temp % 10;
+      temp = temp ~/ 10;
+
+      decimal += lastDigit * base;
+
+      base *= 2;
+    }
+
+    return decimal;
+  }
+
+  static int decToBinary(int decimal) {
+    final binary = <int>[];
+
+    while (decimal > 0) {
+      binary.add(decimal % 2);
+      decimal = decimal ~/ 2;
+    }
+    return int.parse(binary.reversed.join());
+  }
+}
 
 void main() {
-  print(DelimetersCalculator.findDividers(100));
+  print(NumberConverter.decToBinary(4));
+  print(NumberConverter.binaryToDec(NumberConverter.decToBinary(4)));
 }
