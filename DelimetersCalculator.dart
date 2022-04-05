@@ -86,6 +86,17 @@ class ListMapFromString {
   }
 }
 
+class WordsMap {
+  static Map<String, int> getMapFromCollection(Iterable collection) {
+    final words = new Map<String, int>();
+
+    for (final word in collection) {
+      words.update(word, (value) => value + 1, ifAbsent: () => 1);
+    }
+    return words;
+  }
+}
+
 void main() {
-  print(ListMapFromString.getNumbesFromString('I am a fraction 123.45'));
+  print(WordsMap.getMapFromCollection(['земля', 'земля', 'земля', 'юпитер']));
 }
