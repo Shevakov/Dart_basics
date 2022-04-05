@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 class DelimetersCalculator {
@@ -97,6 +98,34 @@ class WordsMap {
   }
 }
 
+class WortToNumberConverter {
+  static Map<String, int> _dictionary = {
+    'zero': 0,
+    'one': 1,
+    'two': 2,
+    'three': 3,
+    'four': 4,
+    'five': 5,
+    'six': 6,
+    'seven': 7,
+    'eight': 8,
+    'nine': 9,
+  };
+
+  static List<int> getSetFromString(String words) {
+    final digists = new Set<int>();
+
+    for (var word in words.split(', ')) {
+      int? number = _dictionary[word];
+
+      if (number != null) {
+        digists.add(number);
+      }
+    }
+    return digists.toList();
+  }
+}
+
 void main() {
-  print(WordsMap.getMapFromCollection(['земля', 'земля', 'земля', 'юпитер']));
+  print(WortToNumberConverter.getSetFromString('one, two, three, cat, dog'));
 }
