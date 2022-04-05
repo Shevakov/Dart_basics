@@ -72,7 +72,20 @@ class NumberConverter {
   }
 }
 
+class ListMapFromString {
+  static List<num> getNumbesFromString(String words) {
+    final numbers = <num>[];
+
+    for (var word in words.split(' ')) {
+      num? number = int.tryParse(word.replaceAll(RegExp(r'[^0-9]'), ''));
+      if (number is num) {
+        numbers.add(number);
+      }
+    }
+    return numbers;
+  }
+}
+
 void main() {
-  print(NumberConverter.decToBinary(4));
-  print(NumberConverter.binaryToDec(NumberConverter.decToBinary(4)));
+  print(ListMapFromString.getNumbesFromString('I am a fraction 123.45'));
 }
