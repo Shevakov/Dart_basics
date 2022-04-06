@@ -2,7 +2,8 @@
 // Реализуйте метод
 
 class MidpointRectangleRule {
-  static double calculationIntegral(Function func, double a, double b, int nseg) {
+  static double calculationIntegral(
+      Function func, double a, double b, int nseg) {
     double dx = 1.0 * (b - a) / nseg;
     double sum = 0.0;
     final list = new List<int>.generate(nseg, (i) => i + 1);
@@ -18,5 +19,6 @@ class MidpointRectangleRule {
 }
 
 void main() {
-  print(MidpointRectangleRule.calculationIntegral(fun, 10));
+  print(MidpointRectangleRule.calculationIntegral(
+      (double n) => n * 2, 10, 20, 100));
 }
